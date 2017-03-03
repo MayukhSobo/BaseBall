@@ -45,4 +45,10 @@ div.input_area {
 	border: none !important;
 	background: whitesmoke !important;
 }
+.MathJax {
+    font-weight: normal;
+    color: black;
+    font-size: x-large;  
+}
+
 <style>
