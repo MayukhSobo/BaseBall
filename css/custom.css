@@ -48,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
 	font-family: 'Bitter', sans-serif !important;
-	font-size: 1.1em !important;
+	font-size: 1.4em !important;
 	line-height: 30px !important;
 	font-weight: 400 !important;
 	color: #8d8d8d !important;
@@ -56,7 +56,7 @@ p {
 
 li {
 	font-family: 'Bitter', sans-serif !important;
-	font-size: 1.1em !important;
+	font-size: 1.3em !important;
 	line-height: 30px !important;
 	font-weight: 400 !important;
 	color: #536884 !important;
@@ -64,7 +64,7 @@ li {
 
 code {
 	font-family: 'Source Code Pro', sans-serif !important;
-	font-size: 1.3em !important;
+	font-size: 1.6em !important;
 }
 
 pre {
