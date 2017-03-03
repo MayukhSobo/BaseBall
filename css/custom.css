@@ -14,41 +14,10 @@ body {
 	box-shadow: none;
 }
 
-.rendered_html h1 { font-size: 4rem !important;  }
-.rendered_html h2 { font-size: 3rem !important; }
-.rendered_html h3 { font-size: 2.5rem !important; }
-.rendered_html h4 { font-size: 2rem !important; }
-.rendered_html h5 { font-size: 1.5rem !important; }
-.rendered_html h6 { font-size: 1.5rem !important; }
-
-.rendered_html h1, 
-.rendered_html h2, 
-.rendered_html h3, 
-.rendered_html h4,
-.rendered_html h5, 
-.rendered_html h6 {
-	font-family: 'Montserrat', sans-serif !important;
-	font-weight: 300 !important;
-	line-height: 14px !important;
-	color: rgb(221, 153, 51) !important;
-}
-
-h1 { font-size: 4.5rem !important; }
-h2 { font-size: 4rem !important; }
-h3 { font-size: 3.5rem !important; }
-h4 { font-size: 3rem !important; }
-h5 { font-size: 2.5rem !important; }
-h6 { font-size: 2rem !important; }
-
-h1, h2, h3, h4, h5, h6 {
-	font-family: 'Montserrat', sans-serif !important;
-	color: #e6ae48 !important;
-	line-height: 150px !important;
-}
 
 p {
 	font-family: 'Bitter', sans-serif !important;
-	font-size: 1.4em !important;
+	font-size: 14px !important;
 	line-height: 30px !important;
 	font-weight: 400 !important;
 	color: #8d8d8d !important;
@@ -56,7 +25,7 @@ p {
 
 li {
 	font-family: 'Bitter', sans-serif !important;
-	font-size: 1.3em !important;
+	font-size: 13px !important;
 	line-height: 30px !important;
 	font-weight: 400 !important;
 	color: #536884 !important;
@@ -64,12 +33,12 @@ li {
 
 code {
 	font-family: 'Source Code Pro', sans-serif !important;
-	font-size: 1.6em !important;
+	font-size: 16px !important;
 }
 
 pre {
 	font-family: 'Source Code Pro', sans-serif !important;
-	font-size: 1em !important;
+	font-size: 10px !important;
 }
 
 div.input_area {
