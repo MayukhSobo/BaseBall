@@ -3,7 +3,7 @@
 
 body {
 	font-family: 'Bitter', sans-serif !important;
-	font-size: 1.5em !important;
+	font-size: 12px !important;
 	line-height: 30px !important;
 	font-weight: 400 !important;
 	color: #8d8d8d !important;
@@ -29,7 +29,7 @@ body {
 .rendered_html h6 {
 	font-family: 'Montserrat', sans-serif !important;
 	font-weight: 300 !important;
-	line-height: 1.5em !important;
+	line-height: 14px !important;
 	color: rgb(221, 153, 51) !important;
 }
 
