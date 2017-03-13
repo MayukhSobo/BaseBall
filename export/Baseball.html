@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Baseball</title>
+
+
+<style type="text/css">
+*{margin:0;padding:0;}
+body {
+	font:13.34px 'Source Code Pro';
+	color:black;
+	line-height:1.4em;
+	background-color: #F8F8F8;
+	padding: 0.7em;
+}
+p {
+	margin:1em 0;
+	line-height:1.5em;
+}
+table {
+	font-size:inherit;
+	font:100%;
+	margin:1em;
+}
+table th{border-bottom:1px solid #bbb;padding:.2em 1em;}
+table td{border-bottom:1px solid #ddd;padding:.2em 1em;}
+input[type=text],input[type=password],input[type=image],textarea{font:99% helvetica,arial,freesans,sans-serif;}
+select,option{padding:0 .25em;}
+optgroup{margin-top:.5em;}
+pre,code{font:12px Monaco;}
+pre {
+	margin:1em 0;
+	font-size:12px;
+	background-color:#eee;
+	border:1px solid #ddd;
+	padding:5px;
+	line-height:1.5em;
+	color:#444;
+	overflow:auto;
+	-webkit-box-shadow:rgba(0,0,0,0.07) 0 1px 2px inset;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;border-radius:3px;
+}
+pre code {
+	padding:0;
+	font-size:12px;
+	background-color:#eee;
+	border:none;
+}
+code {
+	font-size:12px;
+	background-color:#f8f8ff;
+	color:#444;
+	padding:0 .2em;
+	border:1px solid #dedede;
+}
+img{border:0;max-width:100%;}
+abbr{border-bottom:none;}
+a{color:#4183c4;text-decoration:none;}
+a:hover{text-decoration:underline;}
+a code,a:link code,a:visited code{color:#4183c4;}
+h2,h3{margin:1em 0;}
+h1,h2,h3,h4,h5,h6{border:0;}
+h1{font-size:170%;border-top:4px solid #aaa;padding-top:.5em;margin-top:1.5em;}
+h1:first-child{margin-top:0;padding-top:.25em;border-top:none;}
+h2{font-size:150%;margin-top:1.5em;border-top:4px solid #e0e0e0;padding-top:.5em;}
+h3{margin-top:1em;}
+hr{border:1px solid #ddd;}
+ul{margin:1em 0 1em 2em;}
+ol{margin:1em 0 1em 2em;}
+ul li,ol li{margin-top:.5em;margin-bottom:.5em;}
+ul ul,ul ol,ol ol,ol ul{margin-top:0;margin-bottom:0;}
+blockquote{margin:1em 0;border-left:5px solid #ddd;padding-left:.6em;color:#555;}
+dt{font-weight:bold;margin-left:1em;}
+dd{margin-left:2em;margin-bottom:1em;}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+kbd {
+  display: inline-block;padding: 3px 5px;font-size: 11px;line-height: 10px;color: #555;vertical-align: middle;background-color: #fcfcfc;border: solid 1px #ccc;border-bottom-color: #bbb;border-radius: 3px;box-shadow: inset 0 -1px 0 #bbb;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+<style type="text/css">
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+</style>
+
+<style type="text/css">
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 style="text-align: center;"> Baseball Data Analysis </h1>
+
+<h3 id="toc_0"><font color='orange'> Introduction</font></h3>
+
+<p>The data that we pulled had a lot of information. The file <code>readME2014.txt</code> has information about the CSV files and basic information of all the CSV files. The following analysis was not on all the CSV files. The files that was put at the centre of all the analysis was <code>salary.csv</code> because a lot of the analysis is centered around the salary. The data cleaning operations were performed on what is present on the <code>salary.csv</code> file. On the way of exploring the Baseball data, some other csv files are also explored, i.e, </p>
+
+<ul>
+<li><code>Master.csv</code></li>
+<li><code>Teams.csv</code></li>
+<li><code>Batting.csv</code></li>
+<li><code>Pitching.csv</code></li>
+</ul>
+
+<p>All the CSVs are given with the project files. Downloand links of all the versions are provided in GitHub README in the form of <em>PDF, HTML, MarkDown, ipython Notebook and JPEG images for plots</em><br><br>
+<font color='red'><br>
+ The code is strictly written in <strong>Python 3.6</strong> with a conda environment. It is recommended to run the code is <strong>Python &gt; 3.4</strong> and using <strong>Python2</strong> is not at all recommended.<br>
+</font></p>
+
+<p><font color='blue'><br>
+<strong>NOTE:</strong> The actual ipynb file may not have all the details in written and the styling may not kick in as it is in PDF or MarkDown. If the intention is to skim through the analysis only instead of running the code, the PDF version is recommended.<br>
+</font></p>
+
+<p>First get all the imports down the line. I am alsi configuring my own css file to improve the look and feel of the Jupyter Notebook. The CSS file is present in styles directory in the project.</p>
+
+<p>Now before we start lets first see what are the questions that we can answer about the dataset from the analysis. These question are of various type and varies from different range and different levels. <strong>Hence after every question, the level of question is also mentioned in bold.</strong> The questions are</p>
+
+<ul>
+<li>How teams invested in players in terms of player&rsquo;s salary? <strong>(Basic)</strong></li>
+<li>How players recieved salary over their career? <strong>(Basic)</strong> </li>
+<li>What are the most common salary ranges teams preferred to compensate their players? This reveals the salary standard of BaseBall. <strong>(Intermediate)</strong></li>
+<li>Is there any abrupt changes (ups/downs) teams faced in terms of the salary they paid? This shows if any year was good or bad for Baseball players or was their any effect of recessions on players&#39; salary. <strong>(Intermediate)</strong></li>
+<li>Is there any abrupt chnages (ups/downs) in players&#39; performance in any year and what could be the probable reason? <strong>(Intermediate)</strong></li>
+<li>How batters&#39; homeruns (HR) or a pitchers&#39; shutouts (SHO) is affected by thier height and weight? <strong>(Intermediate)</strong></li>
+<li>How salary affects players&#39; performance? <strong>(Advanced)</strong></li>
+<li>What makes a team secure first rank or at least be in top 3? <strong>(Advanced)</strong></li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-python">from IPython.core.display import HTML
+def css():
+    style = open(&quot;../css/custom.css&quot;, &quot;r&quot;).read()
+    return HTML(style)
+css()
+####### All required imports ########
+import pandas as pd
+import numpy as np
+import matplotlib.pylab as plt
+import seaborn as sns
+from IPython.display import display
+import matplotlib
+import os
+###################################
+### We are supressing all warnings with an assurance that the 
+#  warnings that are supressed are are not substantial #
+#########################################
+import warnings
+warnings.filterwarnings(&#39;ignore&#39;)
+###################################</code></pre></div>
+
+<p>Configuring our RC file is important to give plots my own customized look and feel. For more info on <code>rcParams</code> and visual parameter configuration, please click <a href="http://matplotlib.org/users/customizing.html"><strong>here</strong></a> </p>
+
+<div><pre class="line-numbers"><code class="language-python">pd.set_option(&#39;display.float_format&#39;, lambda x: &#39;%.3f&#39; % x)
+%config InlineBackend.figure_format = &#39;retina&#39;
+rc={&#39;font.size&#39;: 22, &#39;axes.labelsize&#39;: 22, &#39;legend.fontsize&#39;: 22.0, 
+    &#39;axes.titlesize&#39;: 22, &#39;xtick.labelsize&#39;: 12, &#39;ytick.labelsize&#39;: 16,
+    &#39;legend.fontsize&#39;: 15.0, &#39;figure.figsize&#39;: [15, 8]}
+plt.rcParams.update(**rc)
+sns.set(style=&#39;white&#39;, rc=rc)</code></pre></div>
+
+<p>Now some basic path resolve according to the project directory. <a href="https://docs.python.org/2/library/os.path.html"><strong>Here</strong></a> is the documentation for os module for python. </p>
+
+<div><pre class="line-numbers"><code class="language-python">###### Resolve the path of the data source #######
+ROOT = r&#39;../res/baseball&#39;
+# -----  team data ----- #
+_salary = os.path.join(ROOT, &#39;Salaries.csv&#39;)
+_master = os.path.join(ROOT, &#39;Master.csv&#39;)
+_teams = os.path.join(ROOT, &#39;Teams.csv&#39;)</code></pre></div>
+
+<h3 id="toc_1"><font color='orange'> Let&rsquo;s start the Data cleaning !!</font></h3>
+
+<p>The data cleaning that we are going to perform would be based on <code>Salary.csv</code>. If we open the <code>Salary.csv</code>, we see no players&#39; name but only their IDs. Now we would need players&#39; name in furute. The players&#39; name is only available in <code>Master.csv</code>. Hence we need to pullin the corresponding names of the players along with their IDs. Moreover in the salary csv file, entries are noted only from <code>1985</code> to <code>2014</code>. Salary info of any other year previous to this is not present, may be because the recodings of Salary is started from <code>1985</code> and not prior to that. Hence players who used to play prior to <code>1985</code> had no entry in the Salary.csv file. Hence we need to take only those entries whose record can be found in Salary.csv. </p>
+
+<div><pre class="line-numbers"><code class="language-python">##### Read the data files #######
+data_1 = pd.read_csv(_salary)
+master = pd.read_csv(_master)
+####### Creating data_1 and pulling the fileds form csvs that we need only #######
+required_master_cols = [&#39;playerID&#39;, &#39;nameFirst&#39;, &#39;nameLast&#39;, 
+                        &#39;weight&#39;, &#39;height&#39;, &#39;bats&#39;, &#39;throws&#39;]
+data_1 = data_1.merge(master[required_master_cols], on=&#39;playerID&#39;, how=&#39;inner&#39;)
+data_1[&#39;fullName&#39;] = data_1[&#39;nameFirst&#39;] + &#39;_&#39; + data_1[&#39;nameLast&#39;]
+###### First we want to see how teams invested in their player #########
+
+##### Clean and extract the fields we require #########
+plt_data = data_1.groupby(&#39;teamID&#39;, as_index=False)[&#39;salary&#39;].sum()
+plt_data.sort_values([&#39;salary&#39;], ascending=False, inplace=True)
+plt_data = plt_data.reset_index().drop(&#39;index&#39;, axis=1)
+# display(plt_data)</code></pre></div>
+
+<p>This plot is the basic plot to show a bargraph of how the teams spent on player&rsquo;s salary. This also ensures the data cleaning was performed correctly.</p>
+
+<div><pre class="line-numbers"><code class="language-python">########################################################
+#~~~~~~~~~~~~~~~  NOW PLOT THE DATA ~~~~~~~~~~~~~~~~~~#
+ax = sns.barplot(x=&quot;teamID&quot;, y=&quot;salary&quot;, data=plt_data, palette=&quot;Greens_d&quot;)
+locs, labels = plt.xticks()
+plt.setp(labels, rotation=45)
+plt.show()</code></pre></div>
+
+<!--![png](output_4_0.png)-->
+
+<p><a href="https://ibb.co/eaBSDv"><img src="https://image.ibb.co/f043mF/output_4_0.png" alt="output_4_0" border="0"></a></p>
+
+<p>Now we know that <code>SFG, LAA, NYA, BOS, LAN</code> are the top 5 teams in terms of spending money on their players. The next thing that we should do is to check what are top <strong>players</strong> in terms of salary and logically they should be from <strong>these top teams</strong>.</p>
+
+<p>The following section is for future use when we would create a heatmap to display top 5 players&#39; statistics. The following section is also used to get to 10 players&#39; barchart in terms of the total salary. </p>
+
+<div><pre class="line-numbers"><code class="language-python">plot_data = data_1.groupby([&#39;fullName&#39;], 
+            as_index=False)[&#39;salary&#39;].sum()
+plot_data.sort_values([&#39;salary&#39;], inplace=True, ascending=False)
+five_most_expensive_players = plot_data.fullName.head(n=5)
+
+###########  this part is important for later use   ##########
+# It stores the top 10 players and their teams they played #
+
+g = data_1[data_1.fullName.isin(five_most_expensive_players)] \
+            .groupby([&#39;fullName&#39;,&#39;teamID&#39;])
+tc = [k for k, gr in g]
+from collections import defaultdict
+their_clubs = defaultdict(list)
+for player, team in tc:
+    their_clubs[player].append(team)
+print(their_clubs)
+##############################################################</code></pre></div>
+
+<p>The following section shows the top 5 players in terms of total salary and the teams they played for throughout their career. This also proves the above data wrangling was performed correctly. <font color="red"> Note that <code>their_clubs</code> is not an <code>OrderedDict</code> and hence the 5 players mentioned are among to 5 but may not be in any ascending or descending order. To check top 5 players in descending order, please visit the following barchart of top 20 players.</font></p>
+
+<div><pre class="line-numbers"><code class="language-none">    defaultdict(list,
+                {&#39;Alex_Rodriguez&#39;: [&#39;NYA&#39;, &#39;SEA&#39;, &#39;TEX&#39;],
+                 &#39;Barry_Bonds&#39;: [&#39;PIT&#39;, &#39;SFN&#39;],
+                 &#39;Carlos_Beltran&#39;: [&#39;KCA&#39;, &#39;NYA&#39;, &#39;NYN&#39;, &#39;SLN&#39;],
+                 &#39;Derek_Jeter&#39;: [&#39;NYA&#39;],
+                 &#39;Manny_Ramirez&#39;: [&#39;BOS&#39;, &#39;CLE&#39;, &#39;LAN&#39;, &#39;TBA&#39;]})</code></pre></div>
+
+<p>and here is the chart of top 20 players in terms of their career earnings.</p>
+
+<div><pre class="line-numbers"><code class="language-python"># getting only the top 20 players
+ten_most_expensive_players = plot_data.fullName.head(n=20)
+plot_data = plot_data[plot_data.fullName.isin(ten_most_expensive_players)]
+# fixing the structure for seaborn plot
+plot_data = plot_data.reset_index().drop(&#39;index&#39;, axis=1) 
+# Plotting the top 10 players #
+ax = sns.barplot(x=&quot;fullName&quot;, y=&quot;salary&quot;, data=plot_data,
+                 palette=sns.cubehelix_palette(20, reverse=True),
+                 saturation=1)
+# printing only the firstName
+ax.set(xticklabels=[*map(lambda e: e.split(&#39;_&#39;)[0], 
+                         plot_data.fullName)])
+ax.set(xlabel=&#39;Players&#39;, ylabel=&#39;Total Earning&#39;)
+plt.xticks(rotation=45) 
+plt.show()
+##############################</code></pre></div>
+
+<p><a href="https://ibb.co/eh87Dv"><img src="https://image.ibb.co/fsanDv/output_8_0.png" alt="output_8_0" border="0"></a><br>
+We would revisit this later on.<br>
+Now before we move ahead, let&rsquo;s visualize the distruibution desdity of player&rsquo;s salary. From this we can visualize that <strong>what is the most common salary ranges teams prefer to compensate their players</strong>.</p>
+
+<div><pre class="line-numbers"><code class="language-python">from scipy import stats, integrate
+ax = sns.distplot(data_1.salary, bins=50, kde=True,
+                  rug=False, color=&#39;r&#39;, hist_kws={&#39;rwidth&#39;: 0.8});
+# sns.kdeplot(data_1.salary, shade=True);
+# ax.get_xaxis().get_major_formatter().set_useOffset(True)
+plt.ticklabel_format(style=&#39;plain&#39;, axis=&#39;x&#39;)
+plt.ticklabel_format(style=&#39;plain&#39;, axis=&#39;y&#39;)
+ax.set(xlabel=&#39;Salary Distribution&#39;, ylabel=&#39;Probability&#39;)
+# TODO  Manually format the xticklabels and yticklabels values
+plt.show()</code></pre></div>
+
+<p><a href="https://ibb.co/dTFnDv"><img src="https://image.ibb.co/c3NCfa/output_11_0.png" alt="output_11_0" border="0"></a></p>
+
+<h3 id="toc_2"><font color='orange'> Were they all thrifty ??</font></h3>
+
+<p>The above distribution is skewed and it is the distribution of salary. This shows the most density distribution is located around <code>0 to 5000000</code>. This proves that high salaries were not so frequent. What does this shows?? This shows a common human nature; <strong>most people are thrifty when it comes it money, atleast the baseball teams were.</strong></p>
+
+<div><pre class="line-numbers"><code class="language-python">rot = sns.cubehelix_palette(len(data_1.teamID.unique()), start=2, 
+                            rot=0, dark=0, light=.95, reverse=True)
+ax = sns.pointplot(x=&quot;yearID&quot;, y=&quot;salary&quot;, data=data_1, 
+                   hue=&#39;teamID&#39;, palette=rot, ci=None, 
+                   markers=&#39;.&#39;, join=True)
+ax.legend_.remove()
+locs, labels = plt.xticks()
+plt.setp(labels, rotation=45)
+plt.show()</code></pre></div>
+
+<p><a href="https://ibb.co/gKmG6F"><img src="https://image.ibb.co/j8WSDv/output_13_0.png" alt="output_13_0" border="0"></a></p>
+
+<h3 id="toc_3"><font color='orange'> Did teams think similarly when it comes to money ??</font></h3>
+
+<p>The above timeseries shows how people liked to invest over the passage of time. Each teams represent a single line. The idea is not to show how each teams are investing over time, rather it shows what is the investment pattern of all the teams. We can see that upto <u>2001</u> all the teams invested almost similarly. Beyond <code>2001</code> to around <code>2010</code> the diffence between the investment of teams increased substantially with some team investing a lot than others. But beyong <code>2011</code> this difference got really big and we can also see the top 3 highest investments were made in the year of <code>2014</code>. For example, we can see the the one team at <code>2005</code> invested a lot more than others and kept on investing till the end. The following code shows this club name an the money that they invested. </p>
+
+<div><pre class="line-numbers"><code class="language-python">data_1[data_1.yearID == 2005].groupby(&#39;teamID&#39;, 
+        as_index=False)[&#39;salary&#39;].sum() \
+        .sort_values(&#39;salary&#39;, ascending=False) \
+        .reset_index().drop(&#39;index&#39;, axis=1).ix[0]</code></pre></div>
+
+<p>This prints</p>
+
+<div><pre class="line-numbers"><code class="language-bash">teamID          NYA
+salary    208306817
+Name: 0, dtype: object</code></pre></div>
+
+<p>This is logical too because we have already seen that <code>NYA</code> invested most out of all the teams.</p>
+
+<p>Interestingly, in the year of <code>2014</code>, <code>NYA</code> didn&rsquo;t remain at number 1 position and it changed to <code>LAN</code>. This code shows it below</p>
+
+<div><pre class="line-numbers"><code class="language-python">data_1[data_1.yearID == 2014].groupby(&#39;teamID&#39;, 
+        as_index=False)[&#39;salary&#39;].sum() \
+       .sort_values(&#39;salary&#39;, ascending=False) \
+       .reset_index().drop(&#39;index&#39;, axis=1).ix[0:2]</code></pre></div>
+
+<p>this prints,</p>
+
+<div><pre class="line-numbers"><code class="language-python">    teamID  salary
+0   LAN 214014600
+1   NYA 197543907
+2   PHI 180944967</code></pre></div>
+
+<p><strong>Howerver the trend that we have seen, we can say unless the team is an extraordinary, most teams spent likely over the passage of time</strong></p>
+
+<div><pre class="line-numbers"><code class="language-python">batting = pd.read_csv(os.path.join(ROOT, &#39;Batting.csv&#39;))
+batting = batting[batting.yearID &gt;= 1985]
+batting.fillna(0).reset_index().drop(&#39;index&#39;, axis=1);</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-python">plot_data = batting.groupby(&#39;yearID&#39;, as_index=False).sum()
+
+g = sns.PairGrid(plot_data, 
+                 x_vars=[&#39;R&#39;, &#39;HR&#39;, &#39;RBI&#39;, &#39;CS&#39;, &#39;SO&#39;], y_vars=[&quot;yearID&quot;], 
+                 size=10, aspect=.3)
+
+# # # Draw a dot plot using the stripplot function
+g.map(sns.stripplot, size=12, orient=&quot;h&quot;,
+      palette=&quot;Reds_d&quot;, edgecolor=&quot;red&quot;)
+
+# # # Use the same x axis limits on all columns and add better labels
+g.set(xlabel=&quot;performance&quot;, ylabel=&quot;&quot;)
+
+# # # Use semantically meaningful titles for the columns
+titles = [&quot;Total Runs&quot;, &quot;Home runs&quot;, &quot;Runs Batted In&quot;, 
+          &quot;Caught Stealing&quot;, &quot;Strikeouts&quot;]
+
+for ax, title in zip(g.axes.flat, titles):
+
+    # Set a different title for each axes
+    ax.set(title=title)
+
+# #     # Make the grid horizontal instead of vertical
+    ax.xaxis.grid(False)
+    ax.yaxis.grid(True)
+sns.despine(left=True, bottom=True)
+plt.show()</code></pre></div>
+
+<p><a href="https://ibb.co/dy8JLa"><img src="https://image.ibb.co/jt5b6F/output_17_0.png" alt="output_17_0" border="0"></a><br>
+Now in the above plot I have tried to show how different metric changed over time form 1985 to 2014. We can see for example that there is an abrupt decrese in the total runs scored in the year of 1994 as compared to other years. <strong>Let&rsquo;s verify if the plot shows the right value?</strong> If we execute <code>plot_data.R.argmin()</code> it returns <code>9</code> which is the row number of the <code>plot_data</code> table which is further derived from <code>batting</code>. So to get the year we execute <code>plot_data.ix[9][[&#39;yearID&#39;, &#39;R&#39;]]</code> and indeed the year is 1994 and the run is 15752 which can also be verified from the scale. Evidently all other performance of Batters and Pitchers in the year of 1994 was poor as compared to other years. <strong>SO I GUESS 1994 WAS A DARK YEAR FOR BASEBALL FANS..:)</strong></p>
+
+<h3 id="toc_4"><font color='orange'> Time for another data cleaning</font></h3>
+
+<p>Now as we have colleced some data into the DataFrame called <code>data_1</code>, we need to match it with our new DataFrame: <code>batting</code>. In other words we need to keep only those entries from <code>batting</code> Dataframe whose entry is found in the <code>data_1</code> DataFrame. The resaon we want to do this because we don&rsquo;t want to keep any entries of any players who salary, name, surname, height, weight, pitching hand and batting hand is not present. The common way to achieve this is to <font color='red'>merge(..)</font> on both the DataFrames <code>on=playerID</code></p>
+
+<div><pre class="line-numbers"><code class="language-python">required_batting_cols = [&#39;playerID&#39;, &#39;G&#39;, &#39;R&#39;, &#39;HR&#39;, &#39;CS&#39;, &#39;SO&#39;, 
+                         &#39;yearID&#39;, &#39;teamID&#39;]
+data_1 = data_1.merge(batting[required_batting_cols], 
+                 on=[&#39;playerID&#39;, &#39;yearID&#39;, &#39;teamID&#39;], 
+                 how=&#39;left&#39;).fillna(0)
+# display(data_1)</code></pre></div>
+
+<p>Now I would go into much more interesting and fun stuffs we I would bring in some statistics and hypothesis tests into this but for now, let&rsquo;s focus on the the data table that we have already. Here all the batters staticstics form 1985 to 2014 is avaialbale with their salary and other game related performances.</p>
+
+<p>Let&rsquo;s merge the <strong>pitching</strong> table too as we have done with the <strong>batting</strong> table. The data cleaning process would be exactly similar except the coulumns that needs to be merged</p>
+
+<div><pre class="line-numbers"><code class="language-python">pitching = pd.read_csv(os.path.join(ROOT, &#39;Pitching.csv&#39;))
+pitching = pitching[pitching.yearID &gt;= 1985]
+
+required_pitching_cols = [&#39;yearID&#39;, &#39;teamID&#39;, &#39;playerID&#39;,
+                          &#39;G&#39;,&#39;SHO&#39;, &#39;SV&#39;, &#39;HR&#39;, &#39;R&#39;]
+data_1 = pd.merge(data_1, pitching[required_pitching_cols], 
+            on=[&#39;playerID&#39;, &#39;yearID&#39;, &#39;teamID&#39;, &#39;G&#39;],
+            how=&#39;left&#39;).fillna(0)
+data_1.rename(columns={&quot;R_x&quot;: &quot;Runs_Scored&quot;, 
+                  &quot;R_y&quot;: &quot;Runs_Allowed&quot;,
+                  &quot;HR_x&quot;: &quot;HR_Scored&quot;,
+                  &quot;HR_y&quot;: &quot;HR_Allowed&quot;}, inplace=True)
+sns.lmplot(data=data_1, x=&quot;height&quot;, y=&quot;weight&quot;, size=7, aspect=1, hue=&quot;bats&quot;,
+          scatter_kws=dict(s=data_1.HR_Scored * 2), markers=[&#39;^&#39;, &#39;^&#39;, &#39;^&#39;])
+plt.show()</code></pre></div>
+
+<p><a href="https://ibb.co/diUfYv"><img src="https://image.ibb.co/ePnCfa/output_24_0.png" alt="output_24_0" border="0"></a></p>
+
+<h3 id="toc_5"><font color='orange'>What are the facts the above plot shows ?? </font></h3>
+
+<ul>
+<li>More players play with their <strong>LEFT</strong> hand as compared to the <strong>RIGHT</strong> hand because there is a lot green as compared to red and blue</li>
+<li>Players with most homeruns are of <strong>medium height and medium weight</strong> category. Tall or heavy weight players performed not so well.</li>
+</ul>
+
+<p><strong>Let&rsquo;s see if trend is same in case of of Pitchers!!</strong></p>
+
+<div><pre class="line-numbers"><code class="language-python">sns.lmplot(data=data_1, x=&quot;height&quot;, y=&quot;weight&quot;, size=7, aspect=1, hue=&quot;throws&quot;,
+          scatter_kws=dict(s=((data_1.SHO)**2) * np.pi), markers=[&#39;^&#39;, &#39;^&#39;])
+plt.show()</code></pre></div>
+
+<!--![png](output_26_0.png)-->
+
+<p><a href="https://ibb.co/iG2OmF"><img src="https://image.ibb.co/fohOmF/output_26_0.png" alt="output_26_0" border="0"></a></p>
+
+<h3 id="toc_6"><font color='orange'> Wow we see some wonderful trends here too </font></h3>
+
+<ul>
+<li>Number of players with shutouts is far less than the number of players with homeruns. This means players like to bat more than pitch.</li>
+<li>There are not pitchers who like to throw with both of their hand as comared to the batters. Which means piching can either be done by <strong>left hand</strong> or <strong>right hand</strong> but not with both the hand.</li>
+<li>The <strong>weight</strong> and the <strong>height</strong> trend is similar to the batting. Most of the players performed well if they are medium weight and medium height. We can verify that the bigger marker sizes are all in the middle.</li>
+<li>One more interesting thing is that even some of the outliers are also above <u>280</u> in weight category whcich is I guess natural because if you are heavy weight, you can not run well and hence as a pitcher, you perform poorly</li>
+</ul>
+
+<h3 id="toc_7"><font color='orange'> Let&rsquo;s move into some Statistics now!! </font></h3>
+
+<p>First let&rsquo;s <code>group</code> all the enries in the <code>DataFrame</code> by the player&rsquo;s ID. Then sum all player&rsquo;s <strong>Total Runs Scored</strong> and their <strong>Total Salary</strong></p>
+
+<div><pre class="line-numbers"><code class="language-python">data_1.groupby(&#39;playerID&#39;, as_index=False)[&#39;playerID&#39;, &#39;Runs_Scored&#39;, &#39;salary&#39;].sum().head()</code></pre></div>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>playerID</th>
+      <th>Runs_Scored</th>
+      <th>salary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>aardsda01</td>
+      <td>0.000</td>
+      <td>9259750</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>aasedo01</td>
+      <td>0.000</td>
+      <td>2300000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>abadan01</td>
+      <td>0.000</td>
+      <td>327000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>abadfe01</td>
+      <td>0.000</td>
+      <td>1428900</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>abbotje01</td>
+      <td>74.000</td>
+      <td>985000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Interestingly some players have scored 0 runs but they were paid a lot. <strong>How is it possible?</strong> It&rsquo;s not necessary that these players are bad as these players can be pitchers and they might have some good <strong>Saves</strong> against some batters. So the logical solution is to combine the <code>SV</code> column with this group by table. But the problem is that they don&rsquo;t share the same scale hence to combine, we need to <code>standardise</code> these two columns and then both the values and create a new column say <code>performance</code>.</p>
+
+<div><pre class="line-numbers"><code class="language-python">stat_data = data_1.groupby(&#39;playerID&#39;, 
+                           as_index=False)[&#39;playerID&#39;, 
+                                          &#39;Runs_Scored&#39;, 
+                                           &#39;salary&#39;, 
+                                           &#39;SV&#39;].sum()
+stat_data[&#39;performance&#39;] =  (stat_data.SV / stat_data.SV.std(ddof=0)) + \
+                            (stat_data.Runs_Scored / stat_data.Runs_Scored.std(ddof=0))
+display(stat_data.head())</code></pre></div>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>playerID</th>
+      <th>Runs_Scored</th>
+      <th>salary</th>
+      <th>SV</th>
+      <th>performance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>aardsda01</td>
+      <td>0.000</td>
+      <td>9259750</td>
+      <td>69.000</td>
+      <td>2.097</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>aasedo01</td>
+      <td>0.000</td>
+      <td>2300000</td>
+      <td>38.000</td>
+      <td>1.155</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>abadan01</td>
+      <td>0.000</td>
+      <td>327000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>abadfe01</td>
+      <td>0.000</td>
+      <td>1428900</td>
+      <td>0.000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>abbotje01</td>
+      <td>74.000</td>
+      <td>985000</td>
+      <td>0.000</td>
+      <td>0.304</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Now I guess I may not need the <code>Runs_Scored</code> and the <code>SV</code> columns. So we can drop them.</p>
+
+<div><pre class="line-numbers"><code class="language-python">stat_data.drop([&#39;Runs_Scored&#39;, &#39;SV&#39;], axis=1, inplace=True)</code></pre></div>
+
+<p>Now it&rsquo;s time to prepare our data. We are going to perform an Hypothesis test to figure out <strong>If above average salary resulted in above average performance??</strong> However we are taking <code>median</code> here instead of <code>mean</code> to reject all the outliers.</p>
+
+<div><pre class="line-numbers"><code class="language-python">stat_data_below_average = stat_data[stat_data.salary &lt; stat_data.salary.median()]
+stat_data_above_average = stat_data[stat_data.salary &gt;= stat_data.salary.median()]
+# display(stat_data_above_average)</code></pre></div>
+
+<p>Now before we move ahead, let&rsquo;s perofrom a quick plot see the total number of people in both the groups</p>
+
+<div><pre class="line-numbers"><code class="language-python">performanceMean = stat_data.performance.mean()
+def label_performance(row):
+    if row[&#39;performance&#39;] &lt; performanceMean:
+        return &#39;Low Performer&#39;
+    else:
+        return &#39;High Performer&#39;
+stat_data[&#39;Performing_Level&#39;] = stat_data.apply(lambda row: label_performance(row), axis=1)</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-python">ax = sns.countplot(x=&quot;Performing_Level&quot;, data=stat_data, palette=&quot;Blues&quot;)
+plt.show()</code></pre></div>
+
+<p><a href="https://ibb.co/jvOURF"><img src="https://image.ibb.co/gUnCfa/output_40_0.png" alt="output_40_0" border="0"></a></p>
+
+<p>As we expected, there are a lot less high performers as compared low performers.</p>
+
+<div class="latex">
+
+$$ \blacktriangleright \text{    H}_o = \text{Player&rsquo;s performance would not be different or, } \mu_h = \mu_l $$
+$$ \blacktriangleright \text{      H}_a = \text{Player with better salary would have higher performance } \mu_h > \mu_l $$
+</div>
+
+<div><pre class="line-numbers"><code class="language-python">#####  Getting the two sample series #######
+sample_low = np.array(stat_data_below_average.performance)
+sample_high = np.array(stat_data_above_average.performance)
+
+###### Degrees of Freedom #######
+df = len(sample_low) + len(sample_high) - 2
+# print(df)
+
+###### α Value ######
+alpha = 0.5
+
+
+####### Mean of Samples ##########
+x_low = sample_low.mean()
+x_high = sample_high.mean()
+
+#######  t-statistics at α=0.5 ######
+#### For degrees of freedom of 4819 and one tailed t-test #####
+t_alpha = 1.64516992
+
+####### Standard Deviations #########
+S_low = sample_low.std(ddof=1)
+S_high = sample_high.std(ddof=1)
+
+
+######## Sample Sizes ########
+n_low = len(sample_low)
+n_high = len(sample_high)
+
+####### Standard Error ########
+s1 = (S_low**2) / n_low
+s2 = (S_high*2) / n_high
+s = s1 + s2
+SE = np.sqrt(s)  # &lt;------ Standard Error
+
+###### t-statistics for the sample ######
+t_stat = (x_high - x_low) / SE
+
+HTML(&quot;t-Satistics is &lt;strong&gt;{}&lt;/strong&gt; while the \
+     t-critical at α=0.5 is &lt;strong&gt;{}&lt;/strong?&gt;&quot;.format(t_stat, t_alpha))
+</code></pre></div>
+
+<p>t-Satistics is <strong>31.349217958194718</strong> while the      t-critical at α=0.5 is <strong>1.64516992</strong></p>
+
+<h3 id="toc_8"><font color='orange'> Decision on the Hypothesis </font></h3>
+
+<p>So as we can see that the <u>t-stat</u> is huge as compared to the <u>t-critical</u> and the <u>t-stat</u> is positive. This means we reject the null hypothesis in favour of alternative hypothesis. Now we can surely say that <strong>The players who were paid more performed better</strong><br>
+Below is a plot which displays it more clearly</p>
+
+<div><pre class="line-numbers"><code class="language-python">salaryMedian = stat_data.salary.median()
+def label_salary(row):
+    if row[&#39;salary&#39;] &lt; salaryMedian:
+        return &#39;Salary below average&#39;
+    else:
+        return &#39;Salary above average&#39;
+stat_data[&#39;Salary_Level&#39;] = stat_data.apply(lambda row: label_salary(row), axis=1)
+ax = sns.stripplot(x=&quot;Salary_Level&quot;, y=&quot;performance&quot;, data=stat_data, 
+                   jitter=0.3, palette=&quot;Set1&quot;, 
+                  edgecolor=&quot;gray&quot;, 
+                  size=10, alpha=0.5, 
+                  marker=&quot;^&quot;)
+plt.show()</code></pre></div>
+
+<p><a href="https://ibb.co/cOefYv"><img src="https://image.ibb.co/hcGSDv/output_45_0.png" alt="output_45_0" border="0"></a></p>
+
+<p>In the above plot we can see that the category <code>Salary below Average</code> is only concentrated within the performance range 0 to 2.5 with an exception of few points as true otliers. While in the right for the category <code>Salary above average</code> is distributed upto 7.5 and having some outliers upto 20.</p>
+
+<p>Another plot below is more descriptive about two categories above relating to the wide range of performance keys distributed within the sample data. </p>
+
+<div><pre class="line-numbers"><code class="language-python">plot_data = data_1.groupby(&#39;playerID&#39;, 
+                           as_index=False)[&#39;playerID&#39;, 
+                                           &#39;Runs_Scored&#39;,
+                                           &#39;G&#39;,
+                                           &#39;HR_Scored&#39;,
+                                           &#39;CS&#39;,
+                                           &#39;SHO&#39;,
+                                           &#39;SV&#39;,
+                                           &#39;salary&#39;].sum()
+plot_data[&#39;Salary_Level&#39;] = stat_data.apply(lambda row: label_salary(row), axis=1)</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-python">def create_descriptive_pie(dataframe, hue, columns,
+                          ncol=3, nrow=2):
+    labels = list(dataframe[hue].unique())
+    matplotlib.style.use(&#39;fivethirtyeight&#39;)
+    # TODO This part could be more generic
+    df1 = dataframe[dataframe[hue] == labels[0]]
+    df2 = dataframe[dataframe[hue] == labels[1]]
+#     print(labels)
+    fig, ax = plt.subplots(nrow, ncol);
+    explode = (0, 0.3)
+    for row in range(nrow):
+        for col in range(ncol):
+            size = [df1[columns[col + (row * ncol)]].sum(), 
+                    df2[columns[col + (row * ncol)]].sum()]
+#             print(columns[col + (row * ncol)], size)
+            ax[row][col].pie(size, explode=explode, autopct=&#39;%1.1f%%&#39;,
+                         shadow=True, startangle=90,
+                         colors=[&#39;#A1CAF1&#39;, &#39;#FF947B&#39;]);
+            ax[row][col].axis(&#39;equal&#39;);
+            ax[row][col].set_xlabel(columns[col + (row * ncol)]);
+    plt.legend(labels, loc=(1, 1));
+#     plt.figure(facecolor=&quot;white&quot;);
+    plt.show();
+
+create_descriptive_pie(plot_data, hue=&#39;Salary_Level&#39;, 
+                                  columns=[&#39;Runs_Scored&#39;,
+                                           &#39;G&#39;,
+                                           &#39;HR_Scored&#39;,
+                                           &#39;CS&#39;,
+                                           &#39;SHO&#39;,
+                                           &#39;SV&#39;])
+</code></pre></div>
+
+<p><a href="https://ibb.co/jTow6F"><img src="https://image.ibb.co/hmmimF/output_48_0.png" alt="output_48_0" border="0"></a></p>
+
+<p>We can see that in all of the cases <strong>players above average salary</strong> did well in all those performance metrics as compared to <strong>players below average salary</strong>. This proves even more that players with better salary played better too. This proves very well that in almost all the metrics players performed well when they were payed more.</p>
+
+<div><pre class="line-numbers"><code class="language-python">def create_categorical_histogram(dataframe):
+    pass</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-python">from operator import itemgetter
+heatmap_salary_data = pd.DataFrame(index=list(their_clubs.keys()), 
+                            columns={*map(itemgetter(1), tc)})
+heatmap_tenure_data = pd.DataFrame(index=list(their_clubs.keys()), 
+                            columns={*map(itemgetter(1), tc)})
+heatmap_Pindex_data = pd.DataFrame(index=list(their_clubs.keys()), 
+                            columns={*map(itemgetter(1), tc)})
+heatmap_sArrow_data = pd.DataFrame(index=list(their_clubs.keys()), 
+                            columns={*map(itemgetter(1), tc)})
+heatmap_mArrow_data = pd.DataFrame(index=list(their_clubs.keys()), 
+                            columns={*map(itemgetter(1), tc)})
+for player, clubs in their_clubs.items():
+    for club in clubs:
+        d =  data_1[(data_1.teamID == club)&amp;
+                    (data_1.fullName == player)]
+        heatmap_salary_data.loc[player, club] = d.salary.sum() / 1000000.0
+        heatmap_tenure_data.loc[player, club] = d.yearID.max() - d.yearID.min()
+        temp = data_1[(data_1.yearID &lt;= d.yearID.max()) &amp;
+                       (data_1.yearID &gt;= d.yearID.min())]
+        gp_score = (d.G / temp.G.std()).sum()
+        rs_score = (d.Runs_Scored / temp.Runs_Scored.std()).sum()
+        hr_score = (d.HR_Scored / temp.HR_Scored.std()).sum()
+        sho_score = (d.SHO / temp.SHO.std()).sum()
+        sv_score = (d.SV / temp.SV.std()).sum()
+        heatmap_Pindex_data.loc[player, club] = gp_score + rs_score + \
+                                                hr_score + sho_score + \
+                                                sv_score
+        gTemp = temp.groupby(&#39;fullName&#39;, as_index=False)[&#39;salary&#39;].sum()
+        gTemp.sort_values(&#39;salary&#39;, ascending=False, inplace=True)
+        if player in list(gTemp.head().fullName):
+            heatmap_sArrow_data.loc[player, club] = &#39;▲&#39;
+        else:
+            heatmap_sArrow_data.loc[player, club] = &#39;▼&#39;
+
+        metrics = [&#39;G&#39;, &#39;Runs_Scored&#39;, &#39;HR_Scored&#39;, &#39;SHO&#39;, &#39;SV&#39;]
+        gTemp = temp.groupby(&#39;fullName&#39;, as_index=False)[metrics].sum()
+        gTemp[&#39;G&#39;] /= temp.G.std()
+        gTemp[&#39;Runs_Scored&#39;] /= temp.Runs_Scored.std()
+        gTemp[&#39;HR_Scored&#39;] /= temp.HR_Scored.std()
+        gTemp[&#39;SHO&#39;] /= temp.SHO.std()
+        gTemp[&#39;SV&#39;] /= temp.SV.std()
+        gTemp[&#39;Gross_Metric_Score&#39;] = gTemp[&#39;G&#39;] + \
+            gTemp[&#39;Runs_Scored&#39;] + gTemp[&#39;HR_Scored&#39;] + \
+            gTemp[&#39;SHO&#39;] + gTemp[&#39;SV&#39;]
+        gTemp.sort_values(&#39;Gross_Metric_Score&#39;, ascending=False, inplace=True)
+        if player in list(gTemp.head().fullName):
+            heatmap_mArrow_data.loc[player, club] = &#39;▲&#39;
+        else:
+            heatmap_mArrow_data.loc[player, club] = &#39;▼&#39;
+
+heatmap_salary_data.fillna(0, inplace=True)
+heatmap_tenure_data.fillna(0, inplace=True)
+heatmap_Pindex_data.fillna(0, inplace=True)
+heatmap_sArrow_data.fillna(0, inplace=True)
+heatmap_mArrow_data.fillna(0, inplace=True)
+
+heatmap_data = heatmap_salary_data.applymap(str) + &#39;_&#39; \
+             + heatmap_tenure_data.applymap(str) + &#39;_&#39; \
+             + heatmap_Pindex_data.applymap(str) + &#39;_&#39; \
+             + heatmap_sArrow_data.applymap(str) + &#39;_&#39; \
+             + heatmap_mArrow_data.applymap(str)
+# display(heatmap_sArrow_data)</code></pre></div>
+
+<div><pre class="line-numbers"><code class="language-python">pd.set_option(&#39;display.float_format&#39;, lambda x: &#39;%.3f&#39; % x)
+%config InlineBackend.figure_format = &#39;retina&#39;
+rc={&#39;font.size&#39;: 22, &#39;axes.labelsize&#39;: 22, &#39;legend.fontsize&#39;: 22.0, 
+    &#39;axes.titlesize&#39;: 22, &#39;xtick.labelsize&#39;: 12, &#39;ytick.labelsize&#39;: 16,
+    &#39;legend.fontsize&#39;: 15.0, &#39;figure.figsize&#39;: [15, 8]}
+plt.rcParams.update(**rc)
+sns.set(style=&#39;white&#39;, rc=rc)
+
+
+column_labels = list(heatmap_data.index.values)
+row_labels = list(heatmap_data.columns.values)
+fig, ax = plt.subplots()
+heatmap = ax.imshow(np.array(heatmap_salary_data)
+                    ,cmap=&#39;GnBu&#39;
+                    ,interpolation=&#39;spline36&#39;)
+ax.invert_yaxis()
+ax.xaxis.tick_top()
+ax.set_xticks(np.arange(len(row_labels)))
+ax.set_yticks(np.arange(len(column_labels)))
+
+ax.set_xticklabels(row_labels, minor=False)
+ax.set_yticklabels(column_labels, minor=False)
+
+for y in range(heatmap_data.shape[0]):
+    for x in range(heatmap_data.shape[1]):
+        data = heatmap_data.iloc[y, x].split(&#39;_&#39;)
+        if float(data[0]) and not int(data[1]): 
+            data[1] = &#39;&lt; 1&#39;
+        label_salary = &#39;{:.2f}M&#39;.format(float(data[0]))
+        label_years = &#39;\n{} yrs&#39;.format(data[1])
+        label_score = &#39;\n{:.3f}&#39;.format(float(data[2]))
+        
+        if heatmap_salary_data.iloc[y, x] &lt;= 120 and \
+        heatmap_salary_data.iloc[y, x] != 0:
+            plt.text(x, y, label_salary + data[3] + label_score + data[4] + label_years,
+                 horizontalalignment=&#39;center&#39;,
+                 verticalalignment=&#39;center&#39;,
+                 fontsize=15, 
+                 color=&#39;black&#39;,
+                 fontweight=&#39;bold&#39;)
+#             print(label_salary + data[3] + label_years + label_score)
+        elif heatmap_salary_data.iloc[y, x] &gt; 120 and \
+        heatmap_salary_data.iloc[y, x] != 0:
+             plt.text(x, y, label_salary + data[3] + label_score + data[4] + label_years,
+                 horizontalalignment=&#39;center&#39;,
+                 verticalalignment=&#39;center&#39;,
+                 fontsize=15, 
+                 color=&#39;white&#39;,
+                 fontweight=&#39;bold&#39;)
+#              print(label_salary + data[3] + label_years + label_score)
+        else:
+            plt.text(x, y, label_salary + label_years \
+                     + label_score,
+                 horizontalalignment=&#39;center&#39;,
+                 verticalalignment=&#39;center&#39;,
+                 fontsize=14, 
+                 color=&#39;red&#39;)
+plt.show()
+</code></pre></div>
+
+<p><a href="https://ibb.co/nR2OmF"><img src="https://image.ibb.co/dAU3mF/output_52_0.png" alt="output_52_0" border="0"></a></p>
+
+<h2 id="toc_9"><font color='orange'> Phew!! I have worked really hard for this.. </font></h2>
+
+<p>The above is not just a heatmap but it combines so many things togather. But before that lets first see what are the questions we are trying to answer with this.</p>
+
+<ul>
+<li>Can we say that most expensive players in total are quick team switchers?</li>
+<li>Are most expensive players are best peformers too?</li>
+<li><p>When player played for a less amount of time, are their performace and salary is that good as compared to when they played for long?</p>
+
+<p>The above heatmap is shows the way top 5 players ( in terms of total Salary ) switched their teams over their career. It also shows <code>3 numbers</code> for each cells. </p></li>
+</ul>
+
+<p>The <strong>first Number</strong> shows how much money that players has earned while playing for that team.</p>
+
+<p>The <strong>second Number</strong> shows a performace metric of that player when he played in that team.</p>
+
+<p>The <strong>third Number</strong> shows How long the player played for that team.</p>
+
+<p>With all these we can see that <strong>some arrow</strong> (up or down) after the first two numbers. These arrows shows trends. For example an up arrow after the salary means that <u><strong>THE PLAYER&rsquo;S SALARY WHILE HE WAS PLAYING FOR THAT TEAM IS WITHIN THE TOP 5 FOR THE AMOUNT FOR YEARS HE PLAYED FOR THAT TEAM</strong></u>. The same is for performance metric. Consequently, the down arrow means it is not in top 5.</p>
+
+<p>The performance metric itself is curated very carefully giving preference to almost all the factors that makes baseball player a baseball player. The metrics that are used is</p>
+
+<div><pre class="line-numbers"><code class="language-python"># G           = Number of total games played    ( For all )
+# Runs_Scored = Total number of runs scored     ( For batters  )
+# HR_Scored   = Total number of homeruns scored ( For batters  )
+# SHO         = Total number of shutouts        ( For Pitchers )
+# SV          = Total number of saves           ( For Pitchers )
+metrics = [&#39;G&#39;, &#39;Runs_Scored&#39;, &#39;HR_Scored&#39;, &#39;SHO&#39;, &#39;SV&#39;]</code></pre></div>
+
+<p>As these metrics lie in different range from each other and combining these direcly would not work. Hence the metrics were standardized like this</p>
+
+<div><pre class="line-numbers"><code class="language-python">gTemp = temp.groupby(&#39;fullName&#39;, as_index=False)[metrics].sum()
+gTemp[&#39;G&#39;] /= temp.G.std()
+gTemp[&#39;Runs_Scored&#39;] /= temp.Runs_Scored.std()
+gTemp[&#39;HR_Scored&#39;] /= temp.HR_Scored.std()
+gTemp[&#39;SHO&#39;] /= temp.SHO.std()
+gTemp[&#39;SV&#39;] /= temp.SV.std()
+gTemp[&#39;Gross_Metric_Score&#39;] = gTemp[&#39;G&#39;] + \
+     gTemp[&#39;Runs_Scored&#39;] + gTemp[&#39;HR_Scored&#39;] + \
+     gTemp[&#39;SHO&#39;] + gTemp[&#39;SV&#39;]</code></pre></div>
+
+<p>Because the gross metric is taken, it it pretty balanced out for only batters, only pitchers or both batter and pitchers.</p>
+
+<p>In the above heatmap we can see that most of the players switched their teams atleast once. Some even switched to even 4 teams. Some players played for a team for less than one year which is pretty stange. We can that <code>Derek Jeter</code> is a player who played for only one club and never switched in his long <code>18 years</code> of career. Also for both his salary and performance we see an up arrow. This means he was happy while playing for <code>NYA</code> and paid very well for his long career.</p>
+
+<p><code>Barry Bonds</code> was a remarkable player though. While he was playing for <code>PIT</code> for 6 long years, even his salary was not within the top 5, but his performance was always in top 5 range. Probably that&rsquo;s why he switched the team to <code>SFN</code> where he played for 14 long years. This can be verified further by running the following command </p>
+
+<div><pre class="line-numbers"><code class="language-python">for k, g in data_1[data_1.fullName == &#39;Barry_Bonds&#39;].groupby(&#39;teamID&#39;):
+
+    display(g)</code></pre></div>
+
+<p>We can see that <code>Barry Bonds</code> played in <code>PIT</code> from <code>1986 to 1992</code> and then he switched to <code>SFN</code> where he played from <code>1993 to 2007</code></p>
+
+<p>But interestingly more money playes got, more teams they changed. The code below proves that</p>
+
+<div><pre class="line-numbers"><code class="language-python">number_of_switches_by_low = []
+
+number_of_switches_by_high = []
+
+for k, g in data_1.groupby(&#39;fullName&#39;):
+
+    if g.salary.mean() &lt;= data_1.salary.mean():
+    
+        number_of_switches_by_low.append(len(g.teamID))
+    else:
+    
+        number_of_switches_by_high.append(len(g.teamID))
+print(np.mean(number_of_switches_by_low))
+print(np.mean(number_of_switches_by_high))</code></pre></div>
+
+<p>This prints <br>
+<code><br>
+4.1706527155<br>
+10.8418918919<br>
+</code><br>
+This means players who got more salary than the average, switched more than two times than those who got less salary than average. This trend is also true for number of games played<code>(G)</code>. More games player played, more teams(almost 2 times more) they switched. This means more active players switched more teams although <code>Derek Jeter</code> was truly an exceptional case.</p>
+
+<p>We can also see that the players who have been in top 5 for their performance in any team for a long time could not retain their top 5 position in some other team when they played there for short time. </p>
+
+<h3 id="toc_10"><font color='orange'> All about teams !! </font></h3>
+
+<p>Here we are pulling the <code>Teams.csv</code> file to get some info about the Teams. The following section can answer some of the important questions like,</p>
+
+<ul>
+<li>How different metrics like <code>Total Homeruns</code> or <code>Number of errors</code> made affect the winning ?</li>
+<li>What makes a team rank first as compared to others ?</li>
+</ul>
+
+<div><pre class="line-numbers"><code class="language-python">teams = pd.read_csv(os.path.join(ROOT, &#39;Teams.csv&#39;)).dropna()
+sns.set(style=&#39;ticks&#39;)
+g = sns.lmplot(x=&quot;W&quot;, y=&quot;HR&quot;, col=&quot;WSWin&quot;, data=teams,
+              markers=&#39;o&#39;, hue=&#39;WSWin&#39;,
+              scatter_kws=dict(s=teams.attendance * 0.00002))
+plt.show()
+g = sns.lmplot(x=&quot;W&quot;, y=&quot;E&quot;, col=&quot;WSWin&quot;, data=teams,
+              markers=&#39;o&#39;,  hue=&#39;WSWin&#39;,
+              scatter_kws=dict(s=teams.attendance * 0.00002))
+plt.show()</code></pre></div>
+
+<p><a href="https://ibb.co/cYk9RF"><img src="https://image.ibb.co/cejQ0a/output_56_0.png" alt="output_56_0" border="0"></a><br>
+<a href="https://ibb.co/f08k0a"><img src="https://image.ibb.co/bXok0a/output_56_1.png" alt="output_56_1" border="0"></a></p>
+
+<p>The above four plot shows different things. These are grouped between <code>World Series Winners</code> and <code>Others</code>. Scatter plots with world series winners are in Blue while others are in Green. This shows the correlation of <code>Team&#39;s Winning (W)</code> with two important metrics, i.e., <code>Total Homeruns Scored(HR)</code> and <code>Numbers of errors made(E)</code>. The scatter plot marker sizes are also controlled by down sclaed value of <code>Attendance</code>.</p>
+
+<p>As we can see that the most of the teams showed a upward trend while correlating with Total homeruns scored while they showed a downward treand correlating with Errors made. This pattern was quite expected. We also see that bigger balls are scattered all over which means that there is hardly any relation of the attendance with the correlation group of Wins and Errors or Wins and Homeruns.</p>
+
+<div><pre class="line-numbers"><code class="language-python">k = teams.groupby(&#39;Rank&#39;)
+data_2 = k[&#39;attendance&#39;, &#39;FP&#39;, 
+           &#39;RA&#39;, &#39;R&#39;, &#39;HRA&#39;,
+           &#39;CG&#39;].mean()
+data_2 = data_2.reset_index()
+p = pd.DataFrame(columns=[&#39;DivWin&#39;, &#39;WCWin&#39;, 
+                          &#39;LgWin&#39;, &#39;WSWin&#39;])
+for key, grp in k:
+    temp = grp[[&#39;DivWin&#39;, &#39;WCWin&#39;, &#39;LgWin&#39;, 
+       &#39;WSWin&#39;]].applymap(lambda e: int(e == &#39;Y&#39;)).sum()
+    p = p.append(pd.DataFrame(temp.to_dict(), index=[key,]), 
+                 ignore_index=True)
+pd.concat([data_2, p], axis=1).set_index(&#39;Rank&#39;)</code></pre></div>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>attendance</th>
+      <th>FP</th>
+      <th>RA</th>
+      <th>R</th>
+      <th>HRA</th>
+      <th>CG</th>
+      <th>DivWin</th>
+      <th>LgWin</th>
+      <th>WCWin</th>
+      <th>WSWin</th>
+    </tr>
+    <tr>
+      <th>Rank</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2935598.978</td>
+      <td>0.984</td>
+      <td>682.000</td>
+      <td>793.778</td>
+      <td>157.000</td>
+      <td>6.311</td>
+      <td>90.000</td>
+      <td>19.000</td>
+      <td>0.000</td>
+      <td>10.000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2622748.511</td>
+      <td>0.984</td>
+      <td>702.500</td>
+      <td>772.411</td>
+      <td>158.856</td>
+      <td>5.622</td>
+      <td>0.000</td>
+      <td>11.000</td>
+      <td>35.000</td>
+      <td>5.000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2415210.211</td>
+      <td>0.983</td>
+      <td>731.433</td>
+      <td>744.656</td>
+      <td>164.622</td>
+      <td>5.422</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>1.000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2257799.870</td>
+      <td>0.983</td>
+      <td>784.489</td>
+      <td>717.587</td>
+      <td>174.761</td>
+      <td>5.641</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2035369.773</td>
+      <td>0.981</td>
+      <td>812.720</td>
+      <td>688.867</td>
+      <td>178.547</td>
+      <td>4.080</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2011611.462</td>
+      <td>0.982</td>
+      <td>828.462</td>
+      <td>667.077</td>
+      <td>183.231</td>
+      <td>4.615</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="toc_11"><font color='orange'> What ensures first rank ?? </font></h3>
+
+<p>We can see that as it was expected more run team scored, better was their ranks. For example teams with rank <code>1</code> scored an average of  <code>793.778</code> which is almost <code>20</code> runs more than the second ranking teams having <code>772.441</code> runs. The same trend is visible for homeruns. Consequently, teams with rank <code>1</code>, have less <code>runs allowed(RA) and homeruns allowed(HRA)</code> as compared to teams with rank 2 or 3.</p>
+
+<p>Interestingly, <code>Fielding Percentage(FP)</code> is almost same for teams with any ranks which means <code>Fielding Percentage</code> doesn&rsquo;t affect the rank of any teams. This is logical also because any team would try to field as much as possible irrespective of their expected/desired rank.</p>
+
+<p>The even more interesting part is <code>Division Wins(DivWin), League Wins(LgWin), Wildcard Wins(WCWin) and World Series Wins(WSWin)</code>. We can see that <code>World Series Wins</code> affect a lot in rank which was logical but <code>Division Wins</code> is only constrained to first ranking teams. What does this mean?? This means if any team wins a world series, there is a probable chance that team can be in the list of rank <code>1</code> but there is no gurantee because even second ranking players are also world series winners. But if a team gets a <code>Divisional Win</code>, there is a gurantee that the team would be in the rank <code>1</code> list because divisional wins is only constrained within the first ranking teams. The first ranking teams are never <code>Wild card winners</code> which may mean that to become a first ranker, a team has to perform from the beginning and there can&rsquo;t be any abrupt or special case first rankers. <strong>You have to be a clear winner to be first ranker, NO WILDCARD, NO SPECIAL CASES</strong>. </p>
+
+<h3 id="toc_12"><font color='orange'> Final Hypothesis ?? </font></h3>
+
+<p>Now before I end this analysis, lets induge into some hypothesis and a plot again. The Hypothesis test would be based on the Teams statistics. </p>
+
+<p><strong>I think the less number of complete game(CG) players the team had, the better their chances were to be in top 3 in rankings</strong></p>
+
+<p>In baseball the complete game(CG) means when a pitcher pitches a complete game without any rest. I believe that if a pitcher is pitching for the complete game, his efficiency would decrease than those players who are sitting idle. So if a team would have more CG players, their performance would suffer and lesser their chance would be in top 3. I may be wrong but there is no better way to find this out other than a hypothesis test.</p>
+
+<p>Statistically we would first take two data frames; first having entries of all top three teams only and second, having entries for rest of the teams. Then we take two sample series. One would have number of CG players for top ranking teams and other is numner of CG players for rest of the teams. Then we would perform <strong>One tailed Independent t-Test</strong> where,<br>
+\[ \text{    H}_o \rightarrow \text{Average number of CG players for both would be same or, } \Leftrightarrow \mu_t = \mu_b \]<br>
+\[ \text{    H}_a \rightarrow \text{Top teams would have less CG players than others or, } \Leftrightarrow \mu_t &lt; \mu_b \]<br>
+\[ \mu_t \rightarrow \text{Mean of the number of CG players in top teams}\]<br>
+\[ \mu_b \rightarrow \text{Mean of the number of CG players in bottom teams}\]</p>
+
+<div><pre class="line-numbers"><code class="language-python">##### Getting two different dataframes #########
+top_teams = teams[teams.Rank &lt; 4]
+bottom_teams = teams[teams.Rank &gt; 3]
+
+####### Taking samples #######
+top_teams_sample = np.array(top_teams.CG)
+bottom_teams_sample = np.array(bottom_teams.CG)
+
+###### Degrees of Freedom #######
+df = len(top_teams_sample) + len(bottom_teams_sample) - 2
+# print(df)
+
+###### α Value ######
+alpha = 0.5
+
+
+####### Mean of Samples ##########
+x_top = top_teams_sample.mean()
+x_bottom = bottom_teams_sample.mean()
+
+# #######  t-statistics at α=0.5 ######
+# #### For degrees of freedom of 448 and one tailed t-test #####
+t_alpha = -1.64826197
+
+# ####### Standard Deviations #########
+S_top = top_teams_sample.std(ddof=1)
+S_bottom = bottom_teams_sample.std(ddof=1)
+
+
+# ######## Sample Sizes ########
+n_top = len(top_teams_sample)
+n_bottom = len(bottom_teams_sample)
+
+# ####### Standard Error ########
+s1 = (S_top**2) / n_top
+s2 = (S_bottom*2) / n_bottom
+s = s1 + s2
+SE = np.sqrt(s)  # &lt;------ Standard Error
+
+# ###### t-statistics for the sample ######
+t_stat = (x_top - x_bottom) / SE
+
+HTML(&quot;t-Satistics is &lt;strong&gt;{}&lt;/strong&gt; while the \
+     t-critical at α=0.5 is &lt;strong&gt;{}&lt;/strong?&gt;&quot;.format(t_stat, t_alpha))</code></pre></div>
+
+<p>t-Satistics is <strong>3.169268064806184</strong> while the      t-critical at α=0.5 is <strong>-1.64826197</strong></p>
+
+<h3 id="toc_13"><font color='orange'> Oops!! I was wrong. </font></h3>
+
+<p>Looks like I was completely wrong. The <code>t-stats</code> is a lot more than the one tailed <code>t-critical</code> value. This mean we have to accept the NULL Hypothesis. But NULL hypothesis was that their means would be same. But looking at the <code>t-stats</code> we see that if our ALTERNATIVE hypothesis would have been \[\mu_h &gt; \mu_l\] or \[\mu_h \ne \mu_l\], then <code>t-critical</code> value would have been <code>1.64826197</code> for one tailed and <code>±1.96527334</code> for two tailed, whould have forced us to accept ALTERNATIVE Hypothesis. Looking at all these, we have to say the teams having more CS, tends to be in top 3. The possible explanation that I can think of is that if more players was playing without taking any break, they would probably understand the field, opponent and the pitching tactics which led to their better performance. </p>
+
+<div><pre class="line-numbers"><code class="language-python">colors = [&quot;windows blue&quot;, &quot;amber&quot;, 
+          &quot;greyish&quot;, &quot;faded green&quot;, 
+          &quot;dusty purple&quot;, &#39;rose&#39;]
+ax = sns.boxplot(x=&quot;Rank&quot;, y=&quot;CG&quot;, data=teams, 
+                 whis=np.inf, 
+                 palette=sns.xkcd_palette(colors))
+ax = sns.stripplot(x=&quot;Rank&quot;, y=&quot;CG&quot;, data=teams,
+               jitter=True, color=&quot;.3&quot;)
+plt.show()</code></pre></div>
+
+<p><a href="https://ibb.co/c4CCfa"><img src="https://image.ibb.co/goy7Dv/output_66_0.png" alt="output_66_0" border="0"></a><br>
+The above bar-chart shows what we have found using the Hypothesis. Rank 1, 2 &amp; 3 holders much widely distributed as compared to other rankers. With in I tentatively end my Analysis here.</p>
+
+<h2 id="toc_14">References:</h2>
+
+<blockquote>
+<h4 id="toc_15"><a href="http://www.danielsoper.com/statcalc/calculator.aspx?id=10">t-statistics Calculator</a><br></h4>
+
+<h4 id="toc_16"><a href="http://seaborn.pydata.org/api.html">Seaborn Library</a><br></h4>
+
+<h4 id="toc_17"><a href="http://matplotlib.org/examples/index.html">Matplotlib Documentation</a><br></h4>
+
+<h4 id="toc_18"><a href="http://stackoverflow.com/">StackOverFlow for Pandas</a></h4>
+
+<h4 id="toc_19"><a href="http://pandas.pydata.org/pandas-docs/stable/">Pandas Documentation</a></h4>
+
+<h4 id="toc_20"><a href="http://stackoverflow.com/questions/33282368/plotting-a-2d-heatmap-with-matplotlib">Plotting Categorical Heatmap</a></h4>
+
+<h4 id="toc_21"><a href="https://daringfireball.net/projects/markdown/syntax">Markdown Syntax</a></h4>
+
+<h4 id="toc_22"><a href="https://www.latex-project.org/help/documentation/">LaTeX Documentation</a></h4>
+
+<h4 id="toc_23"><a href="https://www.youtube.com/channel/UCnVzApLJE2ljPZSeQylSEyg">Awesome YouTube Channel For Pandas</a></h4>
+</blockquote>
+
+<h2 style="text-align: center;"> &mdash;&mdash; END &mdash;&mdash; </h2>
+
+
+
+<script type="text/javascript">
+var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?self:{},Prism=function(){var e=/\blang(?:uage)?-(\w+)\b/i,t=0,n=_self.Prism={util:{encode:function(e){return e instanceof a?new a(e.type,n.util.encode(e.content),e.alias):"Array"===n.util.type(e)?e.map(n.util.encode):e.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\u00a0/g," ")},type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},objId:function(e){return e.__id||Object.defineProperty(e,"__id",{value:++t}),e.__id},clone:function(e){var t=n.util.type(e);switch(t){case"Object":var a={};for(var r in e)e.hasOwnProperty(r)&&(a[r]=n.util.clone(e[r]));return a;case"Array":return e.map&&e.map(function(e){return n.util.clone(e)})}return e}},languages:{extend:function(e,t){var a=n.util.clone(n.languages[e]);for(var r in t)a[r]=t[r];return a},insertBefore:function(e,t,a,r){r=r||n.languages;var l=r[e];if(2==arguments.length){a=arguments[1];for(var i in a)a.hasOwnProperty(i)&&(l[i]=a[i]);return l}var o={};for(var s in l)if(l.hasOwnProperty(s)){if(s==t)for(var i in a)a.hasOwnProperty(i)&&(o[i]=a[i]);o[s]=l[s]}return n.languages.DFS(n.languages,function(t,n){n===r[e]&&t!=e&&(this[t]=o)}),r[e]=o},DFS:function(e,t,a,r){r=r||{};for(var l in e)e.hasOwnProperty(l)&&(t.call(e,l,e[l],a||l),"Object"!==n.util.type(e[l])||r[n.util.objId(e[l])]?"Array"!==n.util.type(e[l])||r[n.util.objId(e[l])]||(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,l,r)):(r[n.util.objId(e[l])]=!0,n.languages.DFS(e[l],t,null,r)))}},plugins:{},highlightAll:function(e,t){var a={callback:t,selector:'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'};n.hooks.run("before-highlightall",a);for(var r,l=a.elements||document.querySelectorAll(a.selector),i=0;r=l[i++];)n.highlightElement(r,e===!0,a.callback)},highlightElement:function(t,a,r){for(var l,i,o=t;o&&!e.test(o.className);)o=o.parentNode;o&&(l=(o.className.match(e)||[,""])[1],i=n.languages[l]),t.className=t.className.replace(e,"").replace(/\s+/g," ")+" language-"+l,o=t.parentNode,/pre/i.test(o.nodeName)&&(o.className=o.className.replace(e,"").replace(/\s+/g," ")+" language-"+l);var s=t.textContent,u={element:t,language:l,grammar:i,code:s};if(!s||!i)return n.hooks.run("complete",u),void 0;if(n.hooks.run("before-highlight",u),a&&_self.Worker){var c=new Worker(n.filename);c.onmessage=function(e){u.highlightedCode=e.data,n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(u.element),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},c.postMessage(JSON.stringify({language:u.language,code:u.code,immediateClose:!0}))}else u.highlightedCode=n.highlight(u.code,u.grammar,u.language),n.hooks.run("before-insert",u),u.element.innerHTML=u.highlightedCode,r&&r.call(t),n.hooks.run("after-highlight",u),n.hooks.run("complete",u)},highlight:function(e,t,r){var l=n.tokenize(e,t);return a.stringify(n.util.encode(l),r)},tokenize:function(e,t){var a=n.Token,r=[e],l=t.rest;if(l){for(var i in l)t[i]=l[i];delete t.rest}e:for(var i in t)if(t.hasOwnProperty(i)&&t[i]){var o=t[i];o="Array"===n.util.type(o)?o:[o];for(var s=0;s<o.length;++s){var u=o[s],c=u.inside,g=!!u.lookbehind,h=!!u.greedy,f=0,d=u.alias;u=u.pattern||u;for(var p=0;p<r.length;p++){var m=r[p];if(r.length>e.length)break e;if(!(m instanceof a)){u.lastIndex=0;var y=u.exec(m),v=1;if(!y&&h&&p!=r.length-1){var b=r[p+1].matchedStr||r[p+1],k=m+b;if(p<r.length-2&&(k+=r[p+2].matchedStr||r[p+2]),u.lastIndex=0,y=u.exec(k),!y)continue;var w=y.index+(g?y[1].length:0);if(w>=m.length)continue;var _=y.index+y[0].length,P=m.length+b.length;if(v=3,P>=_){if(r[p+1].greedy)continue;v=2,k=k.slice(0,P)}m=k}if(y){g&&(f=y[1].length);var w=y.index+f,y=y[0].slice(f),_=w+y.length,S=m.slice(0,w),O=m.slice(_),j=[p,v];S&&j.push(S);var A=new a(i,c?n.tokenize(y,c):y,d,y,h);j.push(A),O&&j.push(O),Array.prototype.splice.apply(r,j)}}}}}return r},hooks:{all:{},add:function(e,t){var a=n.hooks.all;a[e]=a[e]||[],a[e].push(t)},run:function(e,t){var a=n.hooks.all[e];if(a&&a.length)for(var r,l=0;r=a[l++];)r(t)}}},a=n.Token=function(e,t,n,a,r){this.type=e,this.content=t,this.alias=n,this.matchedStr=a||null,this.greedy=!!r};if(a.stringify=function(e,t,r){if("string"==typeof e)return e;if("Array"===n.util.type(e))return e.map(function(n){return a.stringify(n,t,e)}).join("");var l={type:e.type,content:a.stringify(e.content,t,r),tag:"span",classes:["token",e.type],attributes:{},language:t,parent:r};if("comment"==l.type&&(l.attributes.spellcheck="true"),e.alias){var i="Array"===n.util.type(e.alias)?e.alias:[e.alias];Array.prototype.push.apply(l.classes,i)}n.hooks.run("wrap",l);var o="";for(var s in l.attributes)o+=(o?" ":"")+s+'="'+(l.attributes[s]||"")+'"';return"<"+l.tag+' class="'+l.classes.join(" ")+'" '+o+">"+l.content+"</"+l.tag+">"},!_self.document)return _self.addEventListener?(_self.addEventListener("message",function(e){var t=JSON.parse(e.data),a=t.language,r=t.code,l=t.immediateClose;_self.postMessage(n.highlight(r,n.languages[a],a)),l&&_self.close()},!1),_self.Prism):_self.Prism;var r=document.currentScript||[].slice.call(document.getElementsByTagName("script")).pop();return r&&(n.filename=r.src,document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",n.highlightAll)),_self.Prism}();"undefined"!=typeof module&&module.exports&&(module.exports=Prism),"undefined"!=typeof global&&(global.Prism=Prism);
+</script>
+
+<script type="text/javascript">
+Prism.languages.python={"triple-quoted-string":{pattern:/"""[\s\S]+?"""|'''[\s\S]+?'''/,alias:"string"},comment:{pattern:/(^|[^\\])#.*/,lookbehind:!0},string:/("|')(?:\\?.)*?\1/,"function":{pattern:/((?:^|\s)def[ \t]+)[a-zA-Z_][a-zA-Z0-9_]*(?=\()/g,lookbehind:!0},"class-name":{pattern:/(\bclass\s+)[a-z0-9_]+/i,lookbehind:!0},keyword:/\b(?:as|assert|async|await|break|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|pass|print|raise|return|try|while|with|yield)\b/,"boolean":/\b(?:True|False)\b/,number:/\b-?(?:0[bo])?(?:(?:\d|0x[\da-f])[\da-f]*\.?\d*|\.\d+)(?:e[+-]?\d+)?j?\b/i,operator:/[-+%=]=?|!=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]|\b(?:or|and|not)\b/,punctuation:/[{}[\];(),.:]/};
+</script>
+
+<script type="text/javascript">
+!function(e){var t={variable:[{pattern:/\$?\(\([\w\W]+?\)\)/,inside:{variable:[{pattern:/(^\$\(\([\w\W]+)\)\)/,lookbehind:!0},/^\$\(\(/],number:/\b-?(?:0x[\dA-Fa-f]+|\d*\.?\d+(?:[Ee]-?\d+)?)\b/,operator:/--?|-=|\+\+?|\+=|!=?|~|\*\*?|\*=|\/=?|%=?|<<=?|>>=?|<=?|>=?|==?|&&?|&=|\^=?|\|\|?|\|=|\?|:/,punctuation:/\(\(?|\)\)?|,|;/}},{pattern:/\$\([^)]+\)|`[^`]+`/,inside:{variable:/^\$\(|^`|\)$|`$/}},/\$(?:[a-z0-9_#\?\*!@]+|\{[^}]+\})/i]};e.languages.bash={shebang:{pattern:/^#!\s*\/bin\/bash|^#!\s*\/bin\/sh/,alias:"important"},comment:{pattern:/(^|[^"{\\])#.*/,lookbehind:!0},string:[{pattern:/((?:^|[^<])<<\s*)(?:"|')?(\w+?)(?:"|')?\s*\r?\n(?:[\s\S])*?\r?\n\2/g,lookbehind:!0,inside:t},{pattern:/(["'])(?:\\\\|\\?[^\\])*?\1/g,inside:t}],variable:t.variable,"function":{pattern:/(^|\s|;|\||&)(?:alias|apropos|apt-get|aptitude|aspell|awk|basename|bash|bc|bg|builtin|bzip2|cal|cat|cd|cfdisk|chgrp|chmod|chown|chroot|chkconfig|cksum|clear|cmp|comm|command|cp|cron|crontab|csplit|cut|date|dc|dd|ddrescue|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|du|egrep|eject|enable|env|ethtool|eval|exec|expand|expect|export|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|getopts|git|grep|groupadd|groupdel|groupmod|groups|gzip|hash|head|help|hg|history|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|jobs|join|kill|killall|less|link|ln|locate|logname|logout|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|make|man|mkdir|mkfifo|mkisofs|mknod|more|most|mount|mtools|mtr|mv|mmv|nano|netstat|nice|nl|nohup|notify-send|nslookup|open|op|passwd|paste|pathchk|ping|pkill|popd|pr|printcap|printenv|printf|ps|pushd|pv|pwd|quota|quotacheck|quotactl|ram|rar|rcp|read|readarray|readonly|reboot|rename|renice|remsync|rev|rm|rmdir|rsync|screen|scp|sdiff|sed|seq|service|sftp|shift|shopt|shutdown|sleep|slocate|sort|source|split|ssh|stat|strace|su|sudo|sum|suspend|sync|tail|tar|tee|test|time|timeout|times|touch|top|traceroute|trap|tr|tsort|tty|type|ulimit|umask|umount|unalias|uname|unexpand|uniq|units|unrar|unshar|uptime|useradd|userdel|usermod|users|uuencode|uudecode|v|vdir|vi|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yes|zip)(?=$|\s|;|\||&)/,lookbehind:!0},keyword:{pattern:/(^|\s|;|\||&)(?:let|:|\.|if|then|else|elif|fi|for|break|continue|while|in|case|function|select|do|done|until|echo|exit|return|set|declare)(?=$|\s|;|\||&)/,lookbehind:!0},"boolean":{pattern:/(^|\s|;|\||&)(?:true|false)(?=$|\s|;|\||&)/,lookbehind:!0},operator:/&&?|\|\|?|==?|!=?|<<<?|>>|<=?|>=?|=~/,punctuation:/\$?\(\(?|\)\)?|\.\.|[{}[\];]/};var a=t.variable[1].inside;a["function"]=e.languages.bash["function"],a.keyword=e.languages.bash.keyword,a.boolean=e.languages.bash.boolean,a.operator=e.languages.bash.operator,a.punctuation=e.languages.bash.punctuation}(Prism);
+</script>
+
+<script type="text/javascript">
+!function(){"undefined"!=typeof self&&self.Prism&&self.document&&Prism.hooks.add("complete",function(e){if(e.code){var t=e.element.parentNode,s=/\s*\bline-numbers\b\s*/;if(t&&/pre/i.test(t.nodeName)&&(s.test(t.className)||s.test(e.element.className))&&!e.element.querySelector(".line-numbers-rows")){s.test(e.element.className)&&(e.element.className=e.element.className.replace(s,"")),s.test(t.className)||(t.className+=" line-numbers");var n,a=e.code.match(/\n(?!$)/g),l=a?a.length+1:1,m=new Array(l+1);m=m.join("<span></span>"),n=document.createElement("span"),n.className="line-numbers-rows",n.innerHTML=m,t.hasAttribute("data-start")&&(t.style.counterReset="linenumber "+(parseInt(t.getAttribute("data-start"),10)-1)),e.element.appendChild(n)}}})}();
+</script>
+
+<script type="text/x-mathjax-config">
+(function () {
+
+MathJax.Hub.Config({
+	'showProcessingMessages': false,
+	'messageStyle': 'none'
+});
+
+if (typeof MathJaxListener !== 'undefined') {
+	MathJax.Hub.Register.StartupHook('End', function () {
+		MathJaxListener.invokeCallbackForKey_('End');
+	});
+}
+
+})();
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+</body>
+
+</html>
