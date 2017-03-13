@@ -1,4 +1,4 @@
-name: tea_facts
+name: py3
 channels:
 - !!python/unicode
   'defaults'
@@ -6,13 +6,19 @@ dependencies:
 - !!python/unicode
   'appnope=0.1.0=py36_0'
 - !!python/unicode
+  'bleach=1.5.0=py36_0'
+- !!python/unicode
+  'bokeh=0.12.4=py36_0'
+- !!python/unicode
   'cycler=0.10.0=py36_0'
 - !!python/unicode
   'decorator=4.0.11=py36_0'
 - !!python/unicode
-  'entrypoints=0.2.2=py36_0'
+  'entrypoints=0.2.2=py36_1'
 - !!python/unicode
   'freetype=2.5.5=2'
+- !!python/unicode
+  'html5lib=0.999=py36_0'
 - !!python/unicode
   'icu=54.1=0'
 - !!python/unicode
@@ -46,7 +52,7 @@ dependencies:
 - !!python/unicode
   'mkl=2017.0.1=0'
 - !!python/unicode
-  'nbconvert=4.2.0=py36_0'
+  'nbconvert=5.1.1=py36_0'
 - !!python/unicode
   'nbformat=4.2.0=py36_0'
 - !!python/unicode
@@ -57,6 +63,10 @@ dependencies:
   'openssl=1.0.2k=0'
 - !!python/unicode
   'pandas=0.19.2=np111py36_1'
+- !!python/unicode
+  'pandoc=1.19.2.1=0'
+- !!python/unicode
+  'pandocfilters=1.4.1=py36_0'
 - !!python/unicode
   'path.py=10.0=py36_0'
 - !!python/unicode
@@ -82,6 +92,8 @@ dependencies:
 - !!python/unicode
   'pytz=2016.10=py36_0'
 - !!python/unicode
+  'pyyaml=3.12=py36_0'
+- !!python/unicode
   'pyzmq=16.0.2=py36_0'
 - !!python/unicode
   'qt=5.6.2=0'
@@ -89,6 +101,12 @@ dependencies:
   'qtconsole=4.2.1=py36_1'
 - !!python/unicode
   'readline=6.2=2'
+- !!python/unicode
+  'requests=2.13.0=py36_0'
+- !!python/unicode
+  'scipy=0.18.1=np111py36_1'
+- !!python/unicode
+  'seaborn=0.7.1=py36_0'
 - !!python/unicode
   'setuptools=27.2.0=py36_0'
 - !!python/unicode
@@ -102,11 +120,15 @@ dependencies:
 - !!python/unicode
   'terminado=0.6=py36_0'
 - !!python/unicode
+  'testpath=0.3=py36_0'
+- !!python/unicode
   'tk=8.5.18=0'
 - !!python/unicode
   'tornado=4.4.2=py36_0'
 - !!python/unicode
   'traitlets=4.3.1=py36_0'
+- !!python/unicode
+  'unicodecsv=0.14.1=py36_0'
 - !!python/unicode
   'wcwidth=0.1.7=py36_0'
 - !!python/unicode
@@ -116,6 +138,8 @@ dependencies:
 - !!python/unicode
   'xz=5.2.2=1'
 - !!python/unicode
+  'yaml=0.1.6=0'
+- !!python/unicode
   'zlib=1.2.8=3'
-prefix: !!python/unicode '/Users/mayukhsarkar/anaconda/envs/tea_facts'
+prefix: !!python/unicode '/Users/mayukhsarkar/anaconda/envs/py3'
 
