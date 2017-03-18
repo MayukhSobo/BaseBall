@@ -80,7 +80,7 @@ class BaseballModel:
         plt.show()
 
     @staticmethod
-    def create_descriptive_pie(dataframe, hue, columns,
+    def create_descriptive_pie(dataframe, hue, columns, tags,
                           ncol=3, nrow=2):
         labels = list(dataframe[hue].unique())
         matplotlib.style.use('fivethirtyeight')
@@ -99,9 +99,10 @@ class BaseballModel:
                              shadow=True, startangle=90,
                              colors=['#A1CAF1', '#FF947B']);
                 ax[row][col].axis('equal');
-                ax[row][col].set_xlabel(columns[col + (row * ncol)]);
+                ax[row][col].set_xlabel(tags[col + (row * ncol)], 
+                                        fontweight='bold',
+                                        fontsize=19);
         plt.legend(labels, loc=(1, 1));
-    #     plt.figure(facecolor="white");
         plt.show();
 
     def prepare_heatmap_data(self, data_1, their_clubs, tc):
@@ -220,4 +221,7 @@ class BaseballModel:
                          verticalalignment='center',
                          fontsize=14, 
                          color='red')
+        fig.text(0.5, 0.865, 'Top 5 player\'s Career Satistics',
+             horizontalalignment='center', color='black', weight='bold',
+             size='large')
         plt.show()
