@@ -240,7 +240,7 @@ plt.show()
 ```
 
 
-![png](output_16_0.png)
+![png](https://github.com/MayukhSobo/BaseBall/raw/master/export/plots/output_16_0.png)
 
 
 ### Were they all thrifty ??
