@@ -10,5 +10,5 @@ To download the project and run it locally, use conda environment of **Python 3.
 - Simplified PDF Link: [pdf link](https://github.com/MayukhSobo/BaseBall/raw/master/export/Baseball_simplified.pdf)
 - Curated PDF Link [Comming SOON](#)
 - Curated HTML Link: [here](https://github.com/MayukhSobo/BaseBall/raw/master/export/Baseball.html) **Recommended Viewing Method**
-- Jupyter Notebook Link: [Coming Soon](#)
+- NbViewer Notebook Link: [Here](http://nbviewer.jupyter.org/github/MayukhSobo/BaseBall/blob/master/src/Baseball.ipynb)
 - JPEG/PNG Links(Graphs Only): [Here](https://github.com/MayukhSobo/BaseBall/raw/master/export/plots.tar.xz)
